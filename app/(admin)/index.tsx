@@ -1,11 +1,10 @@
-
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter } from 'expo-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { logoutSuccess } from '../store/slices/authSlice';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { logoutSuccess } from "../store/slices/authSlice";
 
 const AdminDashboard = () => {
   const router = useRouter();
@@ -14,7 +13,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     dispatch(logoutSuccess());
-    router.replace('/');
+    router.replace("/");
   };
 
   return (
@@ -27,18 +26,18 @@ const AdminDashboard = () => {
             <Text style={styles.userEmail}>{user.email}</Text>
           </View>
         )}
-        
+
         <View style={styles.infoCard}>
-          <Text style={styles.infoTitle}>Estás en la sección de administrador</Text>
+          <Text style={styles.infoTitle}>
+            Estás en la sección de administrador
+          </Text>
           <Text style={styles.infoText}>
-            Desde aquí podrías gestionar usuarios, ver estadísticas y controlar la aplicación.
+            Desde aquí podrías gestionar usuarios, ver estadísticas y controlar
+            la aplicación.
           </Text>
         </View>
-        
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={handleLogout}
-        >
+
+        <TouchableOpacity style={styles.button} onPress={handleLogout}>
           <Text style={styles.buttonText}>Cerrar Sesión</Text>
         </TouchableOpacity>
       </View>
@@ -49,7 +48,7 @@ const AdminDashboard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: "#f5f5f5",
   },
   content: {
     flex: 1,
@@ -57,11 +56,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
   },
   userInfo: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 15,
     borderRadius: 10,
     marginBottom: 20,
@@ -69,15 +68,15 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   userEmail: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
     marginTop: 5,
   },
   infoCard: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
@@ -85,25 +84,25 @@ const styles = StyleSheet.create({
   },
   infoTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
   },
   infoText: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
     lineHeight: 22,
   },
   button: {
-    backgroundColor: '#4A55A2',
+    backgroundColor: "#4A55A2",
     padding: 15,
     borderRadius: 10,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 

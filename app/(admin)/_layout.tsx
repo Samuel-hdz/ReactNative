@@ -1,4 +1,3 @@
-
 import { Stack } from "expo-router";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -11,7 +10,7 @@ const AdminLayout = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.replace('/');
+      router.replace("../");
     }
   }, [isAuthenticated]);
 
