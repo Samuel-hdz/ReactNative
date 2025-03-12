@@ -1,4 +1,4 @@
-import api from "./axios";
+import api, { setToken } from "./axios";
 import {
   loginStart,
   loginSuccess,
@@ -30,7 +30,7 @@ export const loginUser = async (
         token: response.data.token,
       })
     );
-
+    await setToken(response.data.token); // Store token using our helper function
     return response.data;
   } catch (error: any) {
     console.error("Login error:", error.response?.data || error.message);
@@ -63,7 +63,7 @@ export const registerUser = async (
         token: response.data.token,
       })
     );
-
+    await setToken(response.data.token); // Store token using our helper function
     return response.data;
   } catch (error: any) {
     console.error("Register error:", error.response?.data || error.message);
@@ -76,6 +76,7 @@ export const registerUser = async (
 
 // Logout user
 export const logoutUser = () => {
+  localStorage.removeItem("token"); //remove token from localStorage
   return logoutSuccess();
 };
 

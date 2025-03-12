@@ -12,10 +12,18 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({origin: '*'}));
+app.use(cors({
+  origin: ['http://localhost:8081', 'http://localhost:19006', 'http://localhost:3000', 'https://6845-177-249-162-57.ngrok-free.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
+}));
+
+// Middleware para manejar preflight requests
+app.options('*', cors());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://hernandezsaumel:Xqlk8FQQdCsLoFrg@cluster0.mfsjf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://samuel:samuelhdz98@cluster0.m55u6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
